@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 
 var NotesList = React.createClass({
     render: function () {
@@ -13,4 +13,4 @@ var NotesList = React.createClass({
     }
 });
 
-module.exports = NotesList;
+export default NotesList;

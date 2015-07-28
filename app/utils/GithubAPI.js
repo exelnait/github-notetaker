@@ -1,21 +1,22 @@
-var axios = require('axios');
+import axios from 'axios';
 
 function getRepos(username) {
-    return axios.get('https://api.github.com/users/' + username + '/repos')
+    return axios.get(`https://api.github.com/users/${username}/repos`);
 }
 function getUserInfo(username) {
-    return axios.get('https://api.github.com/users/' + username)
+    return axios.get(`https://api.github.com/users/${username}`);
 }
 
-var GithubAPI = {
-    getAllInfo: function(username) {
-        return axios.all([getRepos(username), getUserInfo(username)]).then(function (arr) {
-            return {
-                repos: arr[0].data,
-                bio: arr[1].data
-            }
-        })
+class GithubAPI {
+    static getAllInfo(username) {
+        return axios.all([getRepos(username), getUserInfo(username)])
+            .then((arr) => {
+                return {
+                    repos: arr[0].data,
+                    bio: arr[1].data
+                }
+            })
     }
-};
+}
 
-module.exports = GithubAPI;
+export default GithubAPI;

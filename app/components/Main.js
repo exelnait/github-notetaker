@@ -1,6 +1,6 @@
-var React = require('react');
-var RouteHandler = require('react-router').RouteHandler;
-var Search = require('./Search');
+import React from 'react';
+import {Router, RouteHandler} from 'react-router';
+import Search from './Search';
 
 var Main = React.createClass({
     render: function () {
@@ -19,4 +19,4 @@ var Main = React.createClass({
     }
 });
 
-module.exports = Main;
+export default Main;
