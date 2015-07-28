@@ -5,20 +5,29 @@ var UserProfile = require('./Github/UserProfile');
 var Notes = require('./Notes/Notes');
 var ReactFireMixin = require('reactfire');
 var Firebase = require('firebase');
+var GithubAPI = require('../utils/GithubAPI');
 
 var Profile = React.createClass({
     mixins: [Router.State, ReactFireMixin],
     getInitialState: function () {
       return {
           notes: ['note1','note2'],
-          bio: {name: 'Timofey'},
-          repos: ['test']
+          bio: {},
+          repos: []
       }
     },
     componentDidMount: function () {
         this.ref = new Firebase('https://github-note-tracker.firebaseio.com');
-        var childRef = this.ref.child(this.getParams().username);
+        var username = this.getParams().username;
+        var childRef = this.ref.child(username);
         this.bindAsArray(childRef, 'notes');
+        GithubAPI.getAllInfo(username).then(function (dataObj) {
+            console.log(dataObj)
+            this.setState({
+                bio: dataObj.bio,
+                repos: dataObj.repos
+            })
+        }.bind(this));
     },
     componentWillUnmount: function () {
         this.unbind('notes');
