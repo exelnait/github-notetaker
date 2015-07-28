@@ -2,8 +2,8 @@ import React from 'react';
 import {Router, RouteHandler} from 'react-router';
 import Search from './Search';
 
-var Main = React.createClass({
-    render: function () {
+class Main extends React.Component{
+    render() {
         return (
             <div className="main-container">
                 <nav className="navbar navbar-default" role="navigation">
@@ -17,6 +17,6 @@ var Main = React.createClass({
             </div>
         )
     }
-});
+}
 
 export default Main;
