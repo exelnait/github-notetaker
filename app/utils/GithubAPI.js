@@ -8,7 +8,7 @@ function getUserInfo(username) {
 }
 
 class GithubAPI {
-    getAllInfo(username) {
+    static getAllInfo(username) {
         return axios.all([getRepos(username), getUserInfo(username)])
             .then((arr) => {
                 return {
