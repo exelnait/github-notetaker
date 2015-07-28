@@ -1,22 +1,22 @@
-var React = require('react');
-var RouteHandler = require('react-router').RouteHandler;
-var Search = require('./Search');
+import React from 'react';
+import {RouteHandler} from 'react-router';
+import Search from './Search';
 
-var Main = React.createClass({
-    render: function () {
+class Main extends React.Component{
+    render() {
         return (
             <div className="main-container">
                 <nav className="navbar navbar-default" role="navigation">
-                    <div className="col-sm-7 col-sm-offset-2" style={{marginTop: 15}}>
+                    <div className="col-sm-8 col-sm-offset-2" style={{marginTop: 15}}>
                         <Search />
                     </div>
                 </nav>
                 <div className="container">
-                    <RouteHandler />
+                    <RouteHandler {...this.props}/>
                 </div>
             </div>
         )
     }
-});
+}
 
-module.exports = Main;
+export default Main;
