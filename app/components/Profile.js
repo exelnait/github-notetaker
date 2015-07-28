@@ -22,7 +22,6 @@ var Profile = React.createClass({
         var childRef = this.ref.child(username);
         this.bindAsArray(childRef, 'notes');
         GithubAPI.getAllInfo(username).then(function (dataObj) {
-            console.log(dataObj)
             this.setState({
                 bio: dataObj.bio,
                 repos: dataObj.repos
