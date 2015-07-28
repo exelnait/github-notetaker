@@ -1,18 +1,16 @@
 import React from 'react';
-import Router from 'react-router';
 
-
-var Search = React.createClass({
-    mixins: [Router.Navigation],
-    handleSubmit: function () {
+class Search extends React.Component{
+    handleSubmit() {
+        var router = this.context.router;
         var username = this.refs.username.getDOMNode().value;
         this.refs.username.getDOMNode().value = '';
-        this.transitionTo('profile', {username: username});
-    },
-    render: function () {
+        router.transitionTo('profile', {username: username});
+    }
+    render() {
         return (
             <div className="col-sm-12">
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit.bind(this)}>
                     <div className="form-group col-sm-7">
                         <input type="text" className="form-control" ref="username" />
                     </div>
@@ -23,6 +21,9 @@ var Search = React.createClass({
             </div>
         )
     }
-});
+}
+Search.contextTypes = {
+    router: React.PropTypes.func.isRequired
+};
 
 export default Search;

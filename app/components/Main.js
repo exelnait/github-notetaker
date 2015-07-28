@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router, RouteHandler} from 'react-router';
+import {RouteHandler} from 'react-router';
 import Search from './Search';
 
 class Main extends React.Component{
@@ -7,12 +7,12 @@ class Main extends React.Component{
         return (
             <div className="main-container">
                 <nav className="navbar navbar-default" role="navigation">
-                    <div className="col-sm-7 col-sm-offset-2" style={{marginTop: 15}}>
+                    <div className="col-sm-8 col-sm-offset-2" style={{marginTop: 15}}>
                         <Search />
                     </div>
                 </nav>
                 <div className="container">
-                    <RouteHandler />
+                    <RouteHandler {...this.props}/>
                 </div>
             </div>
         )
